@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Виртуальное окружение
+.venv/
+venv/
+
+# Секреты и локальные настройки
+.env
+
+# Локальные данные (кэш HTML, обработанные статьи) — не храним в git
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Локальное хранилище ChromaDB (создаётся при запуске ingestion)
+chroma_db/
+
+# OS
+.DS_Store
