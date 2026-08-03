@@ -73,21 +73,21 @@ def split_into_articles(html: str) -> list[dict]:
 
     return articles
 
-if __name__ == "__main__":
-    with open("edition_content.html", encoding="utf-8") as f:
-        html = f.read()
+# if __name__ == "__main__":
+#     with open("edition_content.html", encoding="utf-8") as f:
+#         html = f.read()
 
-    articles = split_into_articles(html)
+#     articles = split_into_articles(html)
 
-    print("Всего статей:", len(articles))
-    print()
+#     print("Всего статей:", len(articles))
+#     print()
 
-    # первые 3 статьи целиком
-    for a in articles[:3]:
-        print(a["number"], "|", a["title"], "| Глава", a["chapter_number"])
-        print(a["text"][:200])
-        print("---")
+#     # первые 3 статьи целиком
+#     for a in articles[:3]:
+#         print(a["number"], "|", a["title"], "| Глава", a["chapter_number"])
+#         print(a["text"][:200])
+#         print("---")
 
-    # статьи с отменёнными пунктами
-    repealed = [a for a in articles if a["has_repealed_clauses"]]
-    print("Статей с отменёнными пунктами:", len(repealed))
+#     # статьи с отменёнными пунктами
+#     repealed = [a for a in articles if a["has_repealed_clauses"]]
+#     print("Статей с отменёнными пунктами:", len(repealed))
