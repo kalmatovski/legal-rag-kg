@@ -19,14 +19,13 @@ def build_context(articles: list[dict]) -> str:
     return "\n\n".join(parts)
 
 
-def ask(question: str, top_k: int = 5) -> str:
+def ask(question: str, top_k: int = 5) -> dict:
     articles = search_articles(question, top_k=top_k)
     context = build_context(articles)
-
     prompt = f"{SYSTEM_PROMPT}\n\nСтатьи:\n{context}\n\nВопрос: {question}"
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
     )
-    return response.text
+    return {"answer": response.text, "articles": articles}
