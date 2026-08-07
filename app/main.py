@@ -1,9 +1,16 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.models.schemas import AskRequest, AskResponse, SourceArticle
 from app.retrieval.generation import ask as generate_answer
 
 app = FastAPI(title="Legal RAG - Kyrgyz Civil Code")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
 
 @app.post("/ask", response_model=AskResponse)
 def ask_endpoint(request:AskRequest)->AskResponse:
